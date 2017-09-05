@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiapengcs.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.jiapengcs.bean.Order">
+    <id column="pk_id" jdbcType="INTEGER" property="pkId" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="order_id" jdbcType="CHAR" property="orderId" />
+    <result column="order_status" jdbcType="CHAR" property="orderStatus" />
+    <result column="order_type" jdbcType="CHAR" property="orderType" />
+    <result column="create_time" jdbcType="CHAR" property="createTime" />
+    <result column="update_time" jdbcType="CHAR" property="updateTime" />
+    <result column="pay_time" jdbcType="CHAR" property="payTime" />
+    <result column="ivr_num" jdbcType="INTEGER" property="ivrNum" />
+    <result column="agent_num" jdbcType="INTEGER" property="agentNum" />
+    <result column="functions" jdbcType="CHAR" property="functions" />
+    <result column="amount" jdbcType="CHAR" property="amount" />
+    <result column="purchase_time" jdbcType="CHAR" property="purchaseTime" />
+    <result column="vcc_name" jdbcType="CHAR" property="vccName" />
+    <result column="vcc_id" jdbcType="CHAR" property="vccId" />
+    <result column="product_id" jdbcType="CHAR" property="productId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="effective_start_time" jdbcType="CHAR" property="effectiveStartTime" />
+    <result column="effective_stop_time" jdbcType="CHAR" property="effectiveStopTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pk_id, user_id, order_id, order_status, order_type, create_time, update_time, pay_time, 
+    ivr_num, agent_num, functions, amount, purchase_time, vcc_name, vcc_id, product_id, 
+    remark, effective_start_time, effective_stop_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clom_order
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from clom_order
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiapengcs.bean.Order">
+    insert into clom_order (pk_id, user_id, order_id, 
+      order_status, order_type, create_time, 
+      update_time, pay_time, ivr_num, 
+      agent_num, functions, amount, 
+      purchase_time, vcc_name, vcc_id, 
+      product_id, remark, effective_start_time, 
+      effective_stop_time)
+    values (#{pkId,jdbcType=INTEGER}, #{userId,jdbcType=CHAR}, #{orderId,jdbcType=CHAR}, 
+      #{orderStatus,jdbcType=CHAR}, #{orderType,jdbcType=CHAR}, #{createTime,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=CHAR}, #{payTime,jdbcType=CHAR}, #{ivrNum,jdbcType=INTEGER}, 
+      #{agentNum,jdbcType=INTEGER}, #{functions,jdbcType=CHAR}, #{amount,jdbcType=CHAR}, 
+      #{purchaseTime,jdbcType=CHAR}, #{vccName,jdbcType=CHAR}, #{vccId,jdbcType=CHAR}, 
+      #{productId,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{effectiveStartTime,jdbcType=CHAR}, 
+      #{effectiveStopTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiapengcs.bean.Order">
+    insert into clom_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        pk_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="payTime != null">
+        pay_time,
+      </if>
+      <if test="ivrNum != null">
+        ivr_num,
+      </if>
+      <if test="agentNum != null">
+        agent_num,
+      </if>
+      <if test="functions != null">
+        functions,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="purchaseTime != null">
+        purchase_time,
+      </if>
+      <if test="vccName != null">
+        vcc_name,
+      </if>
+      <if test="vccId != null">
+        vcc_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="effectiveStartTime != null">
+        effective_start_time,
+      </if>
+      <if test="effectiveStopTime != null">
+        effective_stop_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=CHAR},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=CHAR},
+      </if>
+      <if test="ivrNum != null">
+        #{ivrNum,jdbcType=INTEGER},
+      </if>
+      <if test="agentNum != null">
+        #{agentNum,jdbcType=INTEGER},
+      </if>
+      <if test="functions != null">
+        #{functions,jdbcType=CHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=CHAR},
+      </if>
+      <if test="purchaseTime != null">
+        #{purchaseTime,jdbcType=CHAR},
+      </if>
+      <if test="vccName != null">
+        #{vccName,jdbcType=CHAR},
+      </if>
+      <if test="vccId != null">
+        #{vccId,jdbcType=CHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveStartTime != null">
+        #{effectiveStartTime,jdbcType=CHAR},
+      </if>
+      <if test="effectiveStopTime != null">
+        #{effectiveStopTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiapengcs.bean.Order">
+    update clom_order
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=CHAR},
+      </if>
+      <if test="payTime != null">
+        pay_time = #{payTime,jdbcType=CHAR},
+      </if>
+      <if test="ivrNum != null">
+        ivr_num = #{ivrNum,jdbcType=INTEGER},
+      </if>
+      <if test="agentNum != null">
+        agent_num = #{agentNum,jdbcType=INTEGER},
+      </if>
+      <if test="functions != null">
+        functions = #{functions,jdbcType=CHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=CHAR},
+      </if>
+      <if test="purchaseTime != null">
+        purchase_time = #{purchaseTime,jdbcType=CHAR},
+      </if>
+      <if test="vccName != null">
+        vcc_name = #{vccName,jdbcType=CHAR},
+      </if>
+      <if test="vccId != null">
+        vcc_id = #{vccId,jdbcType=CHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveStartTime != null">
+        effective_start_time = #{effectiveStartTime,jdbcType=CHAR},
+      </if>
+      <if test="effectiveStopTime != null">
+        effective_stop_time = #{effectiveStopTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiapengcs.bean.Order">
+    update clom_order
+    set user_id = #{userId,jdbcType=CHAR},
+      order_id = #{orderId,jdbcType=CHAR},
+      order_status = #{orderStatus,jdbcType=CHAR},
+      order_type = #{orderType,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=CHAR},
+      update_time = #{updateTime,jdbcType=CHAR},
+      pay_time = #{payTime,jdbcType=CHAR},
+      ivr_num = #{ivrNum,jdbcType=INTEGER},
+      agent_num = #{agentNum,jdbcType=INTEGER},
+      functions = #{functions,jdbcType=CHAR},
+      amount = #{amount,jdbcType=CHAR},
+      purchase_time = #{purchaseTime,jdbcType=CHAR},
+      vcc_name = #{vccName,jdbcType=CHAR},
+      vcc_id = #{vccId,jdbcType=CHAR},
+      product_id = #{productId,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      effective_start_time = #{effectiveStartTime,jdbcType=CHAR},
+      effective_stop_time = #{effectiveStopTime,jdbcType=CHAR}
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+</mapper>
